@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "package": "swift-ai-prodia",
+  "status": "coarse-import",
+  "upstream": [
+    {
+      "name": "@ai-sdk/prodia",
+      "implementation": [
+        "packages/prodia/src"
+      ],
+      "tests": [
+        "packages/prodia/src/lazy-schemas.test.ts",
+        "packages/prodia/src/prodia-image-model.test.ts",
+        "packages/prodia/src/prodia-language-model.test.ts",
+        "packages/prodia/src/prodia-provider.test.ts",
+        "packages/prodia/src/prodia-video-model.test.ts"
+      ]
+    }
+  ],
+  "swift": {
+    "sources": [
+      "Sources/SwiftAIProdia/ImageInputCapabilities.swift",
+      "Sources/SwiftAIProdia/ProdiaInputs.swift",
+      "Sources/SwiftAIProdia/ProdiaMediaModels.swift",
+      "Sources/SwiftAIProdia/ProdiaMultipart.swift",
+      "Sources/SwiftAIProdia/ProdiaProvider.swift",
+      "Sources/SwiftAIProdia/ProdiaProviderOptions.swift",
+      "Sources/SwiftAIProdia/ProdiaShared.swift"
+    ],
+    "tests": [
+      "Tests/SwiftAIProdiaTests/FixtureDownloadTransport.swift",
+      "Tests/SwiftAIProdiaTests/ProdiaProviderTests.swift",
+      "Tests/SwiftAIProdiaTests/TestSupport.swift"
+    ],
+    "resources": []
+  },
+  "differences": [
+    {
+      "kind": "native-adaptation",
+      "reason": "Preserve Swift async/await, Sendable, Foundation transport and existing documented gaps; see Docs/CoreV6Parity.md and PortingStatus.md."
+    }
+  ],
+  "reviewNote": "M6: provider runtime, configuration and focused tests extracted. Existing upstream baseline, capability boundaries and gaps retained.",
+  "canonicalOnlyReferences": [],
+  "canonicalDirectory": "Packages/swift-ai-prodia"
+}
