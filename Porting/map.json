@@ -30,7 +30,8 @@
     "tests": [
       "Tests/SwiftAIProdiaTests/FixtureDownloadTransport.swift",
       "Tests/SwiftAIProdiaTests/ProdiaProviderTests.swift",
-      "Tests/SwiftAIProdiaTests/TestSupport.swift"
+      "Tests/SwiftAIProdiaTests/TestSupport.swift",
+      "Tests/SwiftAIProdiaTests/Weekly20261101CredentialsTests.swift"
     ],
     "resources": []
   },
