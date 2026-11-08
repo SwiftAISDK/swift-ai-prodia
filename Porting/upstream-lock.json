@@ -3,20 +3,21 @@
   "packages": [
     {
       "name": "@ai-sdk/prodia",
-      "reviewedVersion": "2.0.73",
+      "reviewedVersion": "2.0.78",
       "ledgerKind": "provider",
-      "evidence": "`AIProviders.prodia`, `ProdiaLanguageModel`, `ProdiaMediaModel`, `ProdiaProviderTests.swift`; 2026-11-01 delta: Docs/WeeklyUpstreamAudit20261101.json",
+      "evidence": "`AIProviders.prodia`, `ProdiaLanguageModel`, `ProdiaMediaModel`, `ProdiaProviderTests.swift`; 2026-11-01 delta: Docs/WeeklyUpstreamAudit20261101.json; 2026-11-08 delta: Docs/WeeklyUpstreamAudit20261108.json",
       "reviewStatus": "imported-reviewed-with-gaps",
-      "archiveIntegrity": "sha512-Opa/NauFeA/arxkxME5sJqvu6juDtYGBCgZWKvxcQjcrXgifdxHUtejkVGDagKksMH2xlNOnkyM10ctLg0zurQ==",
-      "sourceRef": "npm:@ai-sdk/prodia@2.0.73",
-      "testRef": "9b603d36186b75e58d5479445a96c76f6e2d2700",
+      "archiveIntegrity": "sha512-Sc+2ymsoFfUYKMjaTzFUeX9le6YtGPEcmWFVAJNjbpCUV/eRkoowemwlwyb5fsske1QPoNUV0kfcwPDQ38X8QQ==",
+      "sourceRef": "npm:@ai-sdk/prodia@2.0.78",
+      "testRef": "0f3a85f92d1ce06ccde01d662407ef83e097a712",
       "testRefRelationship": "matching-release",
       "contractFamilies": [
         "ImageModelV4",
         "LanguageModelV4",
-        "ProviderV4"
+        "ProviderV4",
+        "VideoModelV4"
       ],
-      "contractReview": "2026-11-01: published declarations, source and exact matching-release changed tests reviewed; scoped dispositions and Swift translations are in Docs/WeeklyUpstreamAudit20261101.json. Existing broader product gaps remain; reviewed delta is not full-package parity."
+      "contractReview": "2026-11-08: published declarations/source and exact matching-release changed tests reviewed; native implementations, per-file dispositions and broader retained gaps are recorded in Docs/WeeklyUpstreamAudit20261108.json. Reviewed delta is not full-package or live-service parity."
     }
   ]
 }
