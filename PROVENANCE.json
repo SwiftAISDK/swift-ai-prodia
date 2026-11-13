@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
   "package": "swift-ai-prodia",
-  "version": "1.1.1",
-  "releaseID": "weekly-upstream-20261108",
+  "version": "1.1.2",
+  "releaseID": "weekly-upstream-20261114",
   "source": {
-    "commit": "8e233ff96fb809445aff9a5c06bb6149a24b94da",
-    "baseCommit": "8e233ff96fb809445aff9a5c06bb6149a24b94da",
+    "commit": "07fbf86b82d83d9724bd03622e9e87e74395286f",
+    "baseCommit": "07fbf86b82d83d9724bd03622e9e87e74395286f",
     "workingTree": false,
-    "inputsSHA256": "987359720075cb67dd8bc45bdc049aee4c5d5a42b67a7eb148e697ce5d18bd77"
+    "inputsSHA256": "63e472c0fe891cb7636d225e1c6467e4761dc3721be68081f2afa9f0b656bb29"
   },
   "dependencies": [
     {
@@ -17,22 +17,22 @@
   ],
   "changes": [
     {
-      "id": "weekly-upstream-20261108",
-      "notes": "Internal catalog extraction preserves maxImages1, no file or mask inputs; new catalog includes descriptions of existing upstream capabilities. Public declarations/tests unchanged. Native unary/simulated language and existing media behavior remain; update versioned user-agent. Reviewed published upstream delta: @ai-sdk/prodia 2.0.73 to 2.0.78. Validation passed: node Scripts/test-packages.mjs (all 52 owning packages plus the complete local facade; 3,965 reported tests and 33 explicit live skips); node Scripts/sdk.mjs dev test; node Scripts/sdk.mjs generate --check; node --test Scripts/tests/*.test.cjs (27 passed); core/provider isolation and version resolution; 52 deterministic package exports, 106 catalog consumers and four additional exact retained-minimum graphs; docs-site install/check/build (100 pages); git diff --check. No paid live-service calls were run. The publication pipeline requires successful Swift 6.3.3 CI at the exact canonical source before publishing.",
-      "compatibility": "Patch release for behavior/header corrections without new required owning API. Existing call sites and exact old selectors are retained. Direct minimums change only for concrete API use or required inherited behavior. Version-delta review does not establish full-package parity or live-service acceptance."
+      "id": "weekly-upstream-20261114",
+      "notes": "Refresh the versioned request identity while retaining the current native request, response and stream behavior. Internal upstream model-catalog reorganizations preserve the existing native policies. Reviewed npm delta: @ai-sdk/prodia 2.0.78 to 2.0.83. Validation: `node Scripts/test-packages.mjs` passed all 52 owning suites and 1731 facade tests; tooling 27/27, generation/isolation checks, standalone exports and 106 minimum/latest consumers, documentation check and 101-page build passed. Publication requires green exact-source Swift 6.3.3 CI. Paid/live verification and full-package parity are not claimed.",
+      "compatibility": "Compatible behavior/header correction. Original public selectors are preserved. npm baselines and Swift SemVer are independent; this reviewed delta does not establish full-package or live-service parity."
     }
   ],
   "canonicalDirectory": "Packages/swift-ai-prodia",
   "upstream": [
     {
       "name": "@ai-sdk/prodia",
-      "reviewedVersion": "2.0.78",
+      "reviewedVersion": "2.0.83",
       "ledgerKind": "provider",
-      "evidence": "`AIProviders.prodia`, `ProdiaLanguageModel`, `ProdiaMediaModel`, `ProdiaProviderTests.swift`; 2026-11-01 delta: Docs/WeeklyUpstreamAudit20261101.json; 2026-11-08 delta: Docs/WeeklyUpstreamAudit20261108.json",
+      "evidence": "`AIProviders.prodia`, `ProdiaLanguageModel`, `ProdiaMediaModel`, `ProdiaProviderTests.swift`; 2026-11-01 delta: Docs/WeeklyUpstreamAudit20261101.json; 2026-11-08 delta: Docs/WeeklyUpstreamAudit20261108.json; 2026-11-14 delta: Docs/WeeklyUpstreamAudit20261114.json",
       "reviewStatus": "imported-reviewed-with-gaps",
-      "archiveIntegrity": "sha512-Sc+2ymsoFfUYKMjaTzFUeX9le6YtGPEcmWFVAJNjbpCUV/eRkoowemwlwyb5fsske1QPoNUV0kfcwPDQ38X8QQ==",
-      "sourceRef": "npm:@ai-sdk/prodia@2.0.78",
-      "testRef": "0f3a85f92d1ce06ccde01d662407ef83e097a712",
+      "archiveIntegrity": "sha512-+bT2WXArjBgaryhTicNbKAvo63EvAJsmdoLc6uBHGnx+XblJKBuw5ErcayRtRQdIvTFtFrfSsUxjo9Zpy6qlRQ==",
+      "sourceRef": "npm:@ai-sdk/prodia@2.0.83",
+      "testRef": "8bc7652cdb13fc84722666eb93f45acd0d131eee",
       "testRefRelationship": "matching-release",
       "contractFamilies": [
         "ImageModelV4",
@@ -40,7 +40,7 @@
         "ProviderV4",
         "VideoModelV4"
       ],
-      "contractReview": "2026-11-08: published declarations/source and exact matching-release changed tests reviewed; native implementations, per-file dispositions and broader retained gaps are recorded in Docs/WeeklyUpstreamAudit20261108.json. Reviewed delta is not full-package or live-service parity."
+      "contractReview": "2026-11-14: verified published source/declarations and exact matching-release changed tests reviewed separately; native ports, per-file dispositions and retained gaps are recorded in Docs/WeeklyUpstreamAudit20261114.json. Delta review is not full-package or live-service parity."
     }
   ],
   "note": "Independent port. Imported test refs and contract review gaps retain their original status; export is not new upstream parity proof.",
@@ -59,7 +59,7 @@
     },
     {
       "canonicalPath": "Packages/swift-ai-prodia/Porting/map.json",
-      "sha256": "32aa1a33aa96246ce06ffcc794207064f80ae1ee6d20c5997ec6d3b11640b266"
+      "sha256": "5ac79f1aac1f85a06f7bd380ab44c665b93a451200f313c8076a1a0529b9af17"
     },
     {
       "canonicalPath": "Packages/swift-ai-prodia/README.md",
@@ -83,7 +83,7 @@
     },
     {
       "canonicalPath": "Packages/swift-ai-prodia/Sources/SwiftAIProdia/ProdiaProvider.swift",
-      "sha256": "fde869fdc8f75d193b007c353afe3f2e55995109a270f1c258b08c1ce853ac7e"
+      "sha256": "6eb10d6ec6ef22e3cd0779958b4be5b014ff1e74829e95308045b4c36b16b6fe"
     },
     {
       "canonicalPath": "Packages/swift-ai-prodia/Sources/SwiftAIProdia/ProdiaProviderOptions.swift",
@@ -99,7 +99,7 @@
     },
     {
       "canonicalPath": "Packages/swift-ai-prodia/Tests/SwiftAIProdiaTests/ProdiaProviderTests.swift",
-      "sha256": "78f5c6f333a4f22ff27bb64d6cb08ec16abca11d2c7c2c0364b92efaf91ab2b0"
+      "sha256": "0de85e86387ab3266857198586a7e15297d3410b0a85a8a9c3552e049c7c7c0c"
     },
     {
       "canonicalPath": "Packages/swift-ai-prodia/Tests/SwiftAIProdiaTests/TestSupport.swift",
@@ -108,6 +108,10 @@
     {
       "canonicalPath": "Packages/swift-ai-prodia/Tests/SwiftAIProdiaTests/Weekly20261101CredentialsTests.swift",
       "sha256": "1e8154e86fc545c246c5e091d2e24f1df1b8a78cdf4f6223ac3711a2cb9d2c02"
+    },
+    {
+      "canonicalPath": "Packages/swift-ai-prodia/Tests/SwiftAIProdiaTests/Weekly20261114DownloadTests.swift",
+      "sha256": "eba56f5f0b10297b8cef8f6b4d63d7be973eae527d3f2bb2f3d12c8f24e39e78"
     }
   ]
 }
