@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
   "package": "swift-ai-prodia",
-  "version": "1.1.3",
-  "releaseID": "weekly-upstream-20261115",
+  "version": "1.2.0",
+  "releaseID": "parity-repairs-20261115",
   "source": {
-    "commit": "1e543b35e0259a5bda888665dacf2d4a7f1bb0ed",
-    "baseCommit": "1e543b35e0259a5bda888665dacf2d4a7f1bb0ed",
+    "commit": "1cd591bdd6b7150a3e51dd5a9f613163d7788b9c",
+    "baseCommit": "1cd591bdd6b7150a3e51dd5a9f613163d7788b9c",
     "workingTree": false,
-    "inputsSHA256": "5508ffc6347bffaed13fb29409eb856df9a7796d3ebdcb6f623d1e8871b52999"
+    "inputsSHA256": "742b7c438463038ef03e06c766ac4148942b17abafa1e77df2381eee6e6bb446"
   },
   "dependencies": [
     {
@@ -17,9 +17,9 @@
   ],
   "changes": [
     {
-      "id": "weekly-upstream-20261115",
-      "notes": "Align the versioned request identity with the reviewed published package while retaining native open String model IDs and existing request, response, option, error, stream and telemetry behavior. Derived TypeScript model-ID/catalog reorganizations preserve the existing native runtime policies. Reviewed npm delta: @ai-sdk/prodia 2.0.83 to 2.0.84. Validation passed: node Scripts/test-packages.mjs (55 owning packages, 2451 owning tests and 1736 compatibility tests), generation checks, 27 tooling tests, isolation/version checks, deterministic exports and minimum-dependency consumers. Documentation check/build passed (104 pages). Publication is gated by exact-source Swift 6.3.3 CI; subsequent public refs and clients are recorded in Docs/ReleaseVerification20261115.json. Paid/live-service checks were not run; this delta does not claim full-package parity.",
-      "compatibility": "Compatible versioned request identity correction; existing public selectors and dependency minimums remain. npm baselines and Swift SemVer are independent."
+      "id": "parity-repairs-20261115",
+      "notes": "Send the Prodia job JSON as the request body (`{type, config}`) for image and text-to-video jobs instead of the internal `{content, values}` wrapper, so those requests match the API. Return generated videos as `base64Videos` with the multipart media type (default `video/mp4`), so video generation no longer fails with no output. Validate the multipart `job` part against the upstream schema and let the last matching part win. Language results now include generated image files in unary results, take text only from `text/*` or `.txt` output parts and build the prompt from the last system message. Omit empty `loras`, apply provider query parameters to image-to-video and language requests, and expose `maxImagesPerCall` and `maxVideosPerCall` (additive). All 57 Swift-reachable upstream image, language, video and provider test cases are translated.",
+      "compatibility": "Additive public properties; existing selectors and initializers remain. Wire bodies and result shapes change to match the reviewed upstream package; applications that read the video from `rawValue` can use `base64Videos`. Dependency minimums are unchanged."
     }
   ],
   "canonicalDirectory": "Packages/swift-ai-prodia",
@@ -28,7 +28,7 @@
       "name": "@ai-sdk/prodia",
       "reviewedVersion": "2.0.84",
       "ledgerKind": "provider",
-      "evidence": "`AIProviders.prodia`, `ProdiaLanguageModel`, `ProdiaMediaModel`, `ProdiaProviderTests.swift`; 2026-11-01 delta: Docs/WeeklyUpstreamAudit20261101.json; 2026-11-08 delta: Docs/WeeklyUpstreamAudit20261108.json; 2026-11-14 delta: Docs/WeeklyUpstreamAudit20261114.json; 2026-11-15 delta: Docs/WeeklyUpstreamAudit20261115.json",
+      "evidence": "`AIProviders.prodia`, `ProdiaLanguageModel`, `ProdiaMediaModel`, `ProdiaProviderTests.swift`; 2026-11-01 delta: Docs/Archive/WeeklyUpstreamAudit20261101.json; 2026-11-08 delta: Docs/Archive/WeeklyUpstreamAudit20261108.json; 2026-11-14 delta: Docs/Archive/WeeklyUpstreamAudit20261114.json; 2026-11-15 delta: Docs/Archive/WeeklyUpstreamAudit20261115.json",
       "reviewStatus": "imported-reviewed-with-gaps",
       "archiveIntegrity": "sha512-n5kA6BojYlyeXk0/agacYQPHGO5XWFd0cVpFDfXSIX5bhVBhtKU0WwIaFpqYlEPJ/S9XF448ZiwEIO9WFADbnw==",
       "sourceRef": "npm:@ai-sdk/prodia@2.0.84",
@@ -40,7 +40,7 @@
         "ProviderV4",
         "VideoModelV4"
       ],
-      "contractReview": "2026-11-15: published source/declarations and exact matching-release tests reviewed separately. Native delta scenarios, per-file dispositions, unchanged-catalog evidence and explicit remaining gaps are recorded in Docs/WeeklyUpstreamAudit20261115.json. Required checks remain a separate gate; no full-package/live-service parity claim."
+      "contractReview": "2026-11-15: published source/declarations and exact matching-release tests reviewed separately. Native delta scenarios, per-file dispositions, unchanged-catalog evidence and explicit remaining gaps are recorded in Docs/Archive/WeeklyUpstreamAudit20261115.json. Required checks remain a separate gate; no full-package/live-service parity claim."
     }
   ],
   "note": "Independent port. Imported test refs and contract review gaps retain their original status; export is not new upstream parity proof.",
@@ -59,11 +59,11 @@
     },
     {
       "canonicalPath": "Packages/swift-ai-prodia/Porting/map.json",
-      "sha256": "72ecec4cf2b84af80dc25c00a6dd05dc252a9a5adb6418b1101f645319afb3d9"
+      "sha256": "fd70fe561942e0f32d3e434e05b70b7858112ec0c93ec936001ad209a366cbfa"
     },
     {
       "canonicalPath": "Packages/swift-ai-prodia/README.md",
-      "sha256": "ba673ff9c3494170e9c75ba6f8e9f16455b70539e2777b97e739f0dddb0d1c10"
+      "sha256": "4402081d1a9000809b8af2dbce0e529602d4a173cbab0b35caf697954028a33e"
     },
     {
       "canonicalPath": "Packages/swift-ai-prodia/Sources/SwiftAIProdia/ImageInputCapabilities.swift",
@@ -71,11 +71,11 @@
     },
     {
       "canonicalPath": "Packages/swift-ai-prodia/Sources/SwiftAIProdia/ProdiaInputs.swift",
-      "sha256": "f37fa12d60d64bcd62897878a67447833d6a2976b98d82d5f94476a1ecec5c74"
+      "sha256": "e4c6b2cfa0b87870ae71beb33b25729e30cd242872236842ec629b3b52afb764"
     },
     {
       "canonicalPath": "Packages/swift-ai-prodia/Sources/SwiftAIProdia/ProdiaMediaModels.swift",
-      "sha256": "f331f3a7f8c431adbf4d49b4ab55d51aac70769678deb4385697d021d03b1665"
+      "sha256": "b9058e25d4e91b51745b0e2e2497bf6bb5d80ce0adba31cbdcd3cee2cc6f5157"
     },
     {
       "canonicalPath": "Packages/swift-ai-prodia/Sources/SwiftAIProdia/ProdiaMultipart.swift",
@@ -87,19 +87,39 @@
     },
     {
       "canonicalPath": "Packages/swift-ai-prodia/Sources/SwiftAIProdia/ProdiaProviderOptions.swift",
-      "sha256": "0acac1d9dbf1c50cc4a794bd32221b113a8248594a31035c24b07f3be2df4f02"
+      "sha256": "ab99e431a52258cb07da351470cf24ed17cdd194ebac59189a29ad04f3a0f5a0"
     },
     {
       "canonicalPath": "Packages/swift-ai-prodia/Sources/SwiftAIProdia/ProdiaShared.swift",
-      "sha256": "572f676dcc4402924c7c17853f335b77f76fc8a15ecb470e579dd15f5fbb665e"
+      "sha256": "29bae3b6a08ce2d1d79cf8d6987ced6fe6dbb2e982b2bef1489943a5e3018e2e"
     },
     {
       "canonicalPath": "Packages/swift-ai-prodia/Tests/SwiftAIProdiaTests/FixtureDownloadTransport.swift",
       "sha256": "ceaa2efe10a74fe2cba0feec9db51c95faf6afffb5bc8b07041aadef80fb1f72"
     },
     {
+      "canonicalPath": "Packages/swift-ai-prodia/Tests/SwiftAIProdiaTests/ProdiaImageModelUpstreamTests.swift",
+      "sha256": "15eb831e90e50619ff8c6870538f5fc4977376fdce85ca7c98e8228f08dd083e"
+    },
+    {
+      "canonicalPath": "Packages/swift-ai-prodia/Tests/SwiftAIProdiaTests/ProdiaLanguageModelUpstreamTests.swift",
+      "sha256": "c5f71968c2376a453c9933910c4bac1e989ca382b83808142f84994a0d54865d"
+    },
+    {
       "canonicalPath": "Packages/swift-ai-prodia/Tests/SwiftAIProdiaTests/ProdiaProviderTests.swift",
-      "sha256": "d249c239d223bdb31673db183936ad5169573eceecc7b48e4e08b5aeb5fbcb3c"
+      "sha256": "b42b9ced99162d4d24a7fe5742592f238d75ba8f17be910dcf447a013757bc4c"
+    },
+    {
+      "canonicalPath": "Packages/swift-ai-prodia/Tests/SwiftAIProdiaTests/ProdiaProviderUpstreamTests.swift",
+      "sha256": "5261085575fe419cbaaa4ed4f1b6a53999850497116de0c3c450dd352d0ef333"
+    },
+    {
+      "canonicalPath": "Packages/swift-ai-prodia/Tests/SwiftAIProdiaTests/ProdiaUpstreamFixtures.swift",
+      "sha256": "38ec8f27322765f2cac41e1e1b47793a0a27f4c002b344de8f6af721200891c0"
+    },
+    {
+      "canonicalPath": "Packages/swift-ai-prodia/Tests/SwiftAIProdiaTests/ProdiaVideoModelUpstreamTests.swift",
+      "sha256": "0b8b164ccc09dd680844d1b5e8ec4661adf4d02aefb6030600f821d6799b07d7"
     },
     {
       "canonicalPath": "Packages/swift-ai-prodia/Tests/SwiftAIProdiaTests/TestSupport.swift",
